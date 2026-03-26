@@ -6,6 +6,53 @@
   flex-direction: column;
 }
 
+/* Hyper-realistic Cinematic Transitions */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Use will-change for performance of animations */
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade-in {
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity;
+}
+
+.reveal-fade-in.active {
+  opacity: 1;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Staggered Delays for elements entering together */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-800 { transition-delay: 800ms; }
+
 /* Navbar */
 .navbar {
   position: absolute;
@@ -89,6 +136,7 @@
   height: 100%;
   object-fit: cover;
   object-position: top;
+  will-change: transform;
 }
 
 .hero-gradient {
@@ -250,11 +298,12 @@
   transform: rotate(-4deg);
   width: 250px;
   z-index: 2;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
 }
 
 .polaroid:hover {
-  transform: rotate(0deg) scale(1.05);
+  transform: rotate(0deg) scale(1.05) !important;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
   z-index: 10;
 }
 
