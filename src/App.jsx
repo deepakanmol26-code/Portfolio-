@@ -55,45 +55,37 @@ const IconMoon = () => (
   </svg>
 );
 
-// Component: Academic Dashboard with MotionCraft Elevate Transition
-const AcademicDashboard = () => {
+// Component: Deepak Motion Engine Animation for Academic Databanks
+const DeepakMotionEngine = () => {
   return (
-    <div className="academic-dashboard reveal r-scale d1">
-      <div className="ac-header">
-        <div className="ac-pulse-ring"></div>
-        <h2 className="ac-title">Academic Databanks</h2>
-        <p className="ac-subtitle">Formal Education Vectors</p>
-      </div>
+    <div className="deepak-motion-engine reveal r-scale d1">
+      <div className="dme-core-glow"></div>
       
-      <div className="ac-cards-container">
-        {/* Card 1: MA */}
-        <div className="ac-card motioncraft-elevate">
-          <div className="ac-card-glow"></div>
-          <div className="ac-card-content">
-            <span className="ac-year">2017 – 2019</span>
-            <h3 className="ac-degree">MA (Sociology)</h3>
-            <p className="ac-university">Central University of South Bihar, Gaya</p>
-            <div className="ac-divider"></div>
-            <p className="ac-report">
-              <span className="ac-highlight">Research Report:</span> "Liquor and its negative impact on social fabric in Bihar"
-            </p>
+      <div className="dme-header">
+        <h2 className="dme-title" data-text="Academic Databanks">Academic Databanks</h2>
+        <p className="dme-subtitle">Records of formal education vectors.</p>
+      </div>
+
+      <div className="dme-track">
+        <div className="dme-energy-line"></div>
+        
+        <div className="dme-node">
+          <div className="dme-pulse-dot"></div>
+          <div className="dme-content motioncraft-elevate">
+            <div className="dme-hologram-scan"></div>
+            <h3 className="dme-degree">MA (Sociology)</h3>
+            <p className="dme-university">Central University of South Bihar, Gaya</p>
+            <p className="dme-report">Report: "Liquor and its negative impact on social fabric in Bihar"</p>
           </div>
-          <div className="ac-border-trace"></div>
         </div>
 
-        {/* Card 2: BBA */}
-        <div className="ac-card motioncraft-elevate delay-1">
-          <div className="ac-card-glow"></div>
-          <div className="ac-card-content">
-            <span className="ac-year">2013 – 2016</span>
-            <h3 className="ac-degree">Bachelor of Business Administration</h3>
-            <p className="ac-university">LNMU, Darbhanga</p>
-            <div className="ac-divider"></div>
-            <p className="ac-report">
-              <span className="ac-highlight">Core Focus:</span> Management, Business Strategy & Operations
-            </p>
+        <div className="dme-node dme-delay">
+          <div className="dme-pulse-dot"></div>
+          <div className="dme-content motioncraft-elevate">
+            <div className="dme-hologram-scan"></div>
+            <h3 className="dme-degree">Bachelor of Business Administration</h3>
+            <p className="dme-university">LNMU, Darbhanga</p>
           </div>
-          <div className="ac-border-trace"></div>
         </div>
       </div>
     </div>
@@ -526,7 +518,7 @@ function App() {
         </section>
 
         {/* Education + Certifications */}
-        <AcademicDashboard />
+        <DeepakMotionEngine />
 
         {/* 3D Matrix Accordion */}
         <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center', color: 'var(--primary-red)', textShadow: '0 0 10px rgba(255, 7, 58, 0.5)', fontSize: '1.1rem', fontWeight: 'bold'}}>
