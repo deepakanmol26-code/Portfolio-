@@ -148,14 +148,7 @@ function App() {
       {/* TOP NAVIGATION */}
       <header className="topbar">
         <div className="logo-brand">Deepak Anmol <span>D.A.</span></div>
-        <div className="nav-links">
-          <a href="#nexus">NEXUS</a>
-          <a href="#archive" className="active">ARCHIVE</a>
-          <a href="#systems">SYSTEMS</a>
-          <a href="#signal">SIGNAL</a>
-        </div>
         <div className="top-icons">
-          <IconSignal />
           <button className="theme-toggle" onClick={() => setIsDark(!isDark)}
             aria-label="Toggle theme">
             {isDark ? <IconSun /> : <IconMoon />}
