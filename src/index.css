@@ -5,20 +5,20 @@
   --bg-card: rgba(15, 20, 35, 0.6);
   --bg-card-hover: rgba(22, 30, 50, 0.8);
   
-  --primary-cyan: #00f3ff;
-  --primary-cyan-dim: rgba(0, 243, 255, 0.2);
+  --primary-red: #ff073a;
+  --primary-red-dim: rgba(255, 7, 58, 0.2);
   --primary-purple: #9d00ff;
   --primary-purple-dim: rgba(157, 0, 255, 0.2);
   
   --text-main: #e2e8f0;
   --text-muted: #64748b;
-  --text-cyan: #00f3ff;
+  --text-cyan: #ff073a;
   
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-display: 'Orbitron', sans-serif;
 
-  --border-glow: inset 0 0 20px rgba(0, 243, 255, 0.05);
+  --border-glow: inset 0 0 20px rgba(255, 7, 58, 0.05);
 }
 
 * {
@@ -37,7 +37,7 @@ body {
   overflow-x: hidden;
   /* Adds a subtle deep space noise texture using a repeating radial gradient trick */
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 15% 50%, rgba(255, 7, 58, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 85% 30%, rgba(157, 0, 255, 0.04) 0%, transparent 50%);
   background-size: cover;
   background-attachment: fixed;
@@ -55,12 +55,12 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-panel);
-  border: 1px solid rgba(0, 243, 255, 0.3);
+  border: 1px solid rgba(255, 7, 58, 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-cyan-dim);
+  background: var(--primary-red-dim);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -90,5 +90,5 @@ button {
 }
 
 .glitch-hover:hover {
-  text-shadow: 2px 0 var(--primary-cyan), -2px 0 var(--primary-purple);
+  text-shadow: 2px 0 var(--primary-red), -2px 0 var(--primary-purple);
 }

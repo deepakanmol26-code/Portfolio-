@@ -284,7 +284,7 @@ function App() {
         </div>
 
         {/* 3D Spider Web Protocol Matrices */}
-        <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center', color: 'var(--primary-cyan)', textShadow: '0 0 10px rgba(0, 243, 255, 0.5)', fontSize: '1.1rem', fontWeight: 'bold'}}>
+        <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center', color: 'var(--primary-red)', textShadow: '0 0 10px rgba(255, 7, 58, 0.5)', fontSize: '1.1rem', fontWeight: 'bold'}}>
           CERTIFIED PROTOCOL MATRICES
         </div>
         <section className="spider-section reveal r-scale d2">
