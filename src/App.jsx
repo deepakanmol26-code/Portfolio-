@@ -338,7 +338,7 @@ const NetflixRow = ({ title, items }) => {
 };
 
 function App() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   // Apply theme class to the root
   useEffect(() => {
