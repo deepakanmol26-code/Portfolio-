@@ -1012,6 +1012,21 @@
   transform: translateY(0);
   opacity: 1;
 }
+.nx-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nx-modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+  pointer-events: none;
+}
 
 .nx-preview-tagline {
   font-size: 0.85rem;

@@ -143,6 +143,7 @@ const experienceData = [
     skills: ['Strategy', 'Capacity Building', 'Recruitment', 'Government Liaison'],
     impact: '150+ Schools Transformed',
     gradient: 'linear-gradient(135deg, #1a0000 0%, #330011 50%, #0a0d1c 100%)',
+    image: '/school_excellence.jpg',
   },
   {
     id: 2, category: 'leadership',
@@ -221,12 +222,15 @@ const NxCard = ({ item, onExpand }) => {
       <div
         ref={cardRef}
         className={`nx-card ${isHovered ? 'nx-card-hovered' : ''}`}
-        style={{background: item.gradient}}
+        style={{
+          background: item.image ? `url(${item.image}) center/cover no-repeat` : item.gradient
+        }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={() => onExpand(item)}
       >
+        {item.image && <div className="nx-card-image-overlay"></div>}
         <div className="nx-card-shine"></div>
         <div className="nx-card-content">
           <span className="nx-card-duration">{item.duration}</span>
@@ -297,7 +301,10 @@ const NetflixRow = ({ title, items }) => {
         <div className="nx-modal-backdrop" onClick={() => setExpandedItem(null)}>
           <div className="nx-modal" onClick={e => e.stopPropagation()}>
             <button className="nx-modal-close" onClick={() => setExpandedItem(null)}>✕</button>
-            <div className="nx-modal-hero" style={{background: expandedItem.gradient}}>
+            <div className="nx-modal-hero" style={{
+              background: expandedItem.image ? `url(${expandedItem.image}) center/cover no-repeat` : expandedItem.gradient
+            }}>
+              {expandedItem.image && <div className="nx-modal-hero-overlay"></div>}
               <div className="nx-modal-hero-content">
                 <span className="nx-modal-duration">{expandedItem.duration}</span>
                 <h1 className="nx-modal-title">{expandedItem.title}</h1>
