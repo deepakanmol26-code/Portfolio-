@@ -132,18 +132,7 @@ function App() {
   return (
     <div className="app-canvas">
 
-      {/* LEFT SIDEBAR */}
-      <aside className="sidebar">
-        <div className="sidebar-icon"><IconDNA /></div>
-        <div className="sidebar-divider"></div>
-        <div className="sidebar-icon active">
-          <IconNetwork />
-          <div className="active-label">SYS-NET</div>
-        </div>
-        <div className="sidebar-icon"><IconCube /></div>
-        <div className="sidebar-divider"></div>
-        <div className="sidebar-icon"><IconSignal /></div>
-      </aside>
+      {/* LEFT SIDEBAR OMITTED BASED ON USER REQUEST */}
 
       {/* TOP NAVIGATION */}
       <header className="topbar">

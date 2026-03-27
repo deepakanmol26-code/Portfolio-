@@ -23,12 +23,6 @@
     radial-gradient(circle at 85% 30%, rgba(114, 9, 183, 0.04) 0%, transparent 50%);
 }
 
-.theme-light .sidebar {
-  background-color: var(--bg-panel);
-  border-right-color: rgba(0,0,0,0.08);
-  box-shadow: inset -5px 0 15px -5px rgba(0,0,0,0.05);
-}
-
 .theme-light .topbar {
   background-color: rgba(240, 242, 245, 0.9);
   border-bottom-color: rgba(0,0,0,0.08);
@@ -111,73 +105,17 @@
   position: relative;
 }
 
-/* SIDEBAR */
-.sidebar {
-  width: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background-color: var(--bg-panel);
-  border-right: 1px solid rgba(0, 243, 255, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 0;
-  z-index: 50;
-  box-shadow: inset -10px 0 20px -10px rgba(0, 243, 255, 0.05);
-}
-
-.sidebar-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
-  cursor: pointer;
-}
-
-.sidebar-icon:hover, .sidebar-icon.active {
-  color: var(--primary-cyan);
-  background-color: var(--primary-cyan-dim);
-  box-shadow: 0 0 15px var(--primary-cyan-dim), var(--border-glow);
-}
-
-.active-label {
-  position: absolute;
-  bottom: -20px;
-  font-size: 0.5rem;
-  color: var(--primary-cyan);
-  text-align: center;
-  line-height: 1;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.sidebar-divider {
-  width: 1px;
-  height: 40px;
-  background: rgba(255,255,255,0.1);
-  margin-bottom: 2rem;
-}
-
 /* TOPBAR */
 .topbar {
   position: fixed;
   top: 0;
-  left: 80px;
+  left: 0;
   right: 0;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 3rem;
+  padding: 0 4vw;
   background-color: rgba(10, 13, 28, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -386,9 +324,9 @@
 
 /* MAIN CONTENT */
 .main-content {
-  margin-left: 80px;
+  margin-left: 0;
   padding: 120px 4vw 80px 4vw;
-  width: calc(100% - 80px);
+  width: 100%;
 }
 
 .temporal-log {
@@ -816,9 +754,7 @@
 .d4 { transition-delay: 0.55s; }
 
 @media (max-width: 768px) {
-  .sidebar { display: none; }
-  .topbar { left: 0; }
-  .main-content { margin-left: 0; width: 100%; }
+  .nav-links { display: none; }
   .nav-links { display: none; }
   .tree-branch.left,
   .tree-branch.right {
