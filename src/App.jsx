@@ -192,8 +192,8 @@ function App() {
             <img src="/hero_banner.jpg" alt="Deepak Anmol - Vision" className="hero-banner-img" />
             <div className="hero-banner-overlay"></div>
             <div className="hero-banner-text reveal r-up d2">
-              <span className="hero-tag">VISIONARY ARCHITECT</span>
-              <h2>Empathy · Leadership · Resilience · Growth · Community</h2>
+              <span className="hero-tag">Social Impact Professional | Government Liaisoning & Inter-Departmental Convergence | Curriculum Design | Ex-Piramal & Magic Bus</span>
+              <h2>Central University of South Bihar</h2>
             </div>
           </div>
           <div className="hero-banner-glow"></div>
