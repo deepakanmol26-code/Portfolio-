@@ -236,7 +236,7 @@ function App() {
             </p>
             <div className="skills-grid">
               <span className="skill-tag highlight">Curriculum Design</span>
-              <span className="skill-tag">Mentoring</span>
+              <span className="skill-tag highlight">Mentoring</span>
               <span className="skill-tag highlight">Data Review</span>
             </div>
             <div className="stats-row">
