@@ -160,7 +160,7 @@ function App() {
             aria-label="Toggle theme">
             {isDark ? <IconSun /> : <IconMoon />}
           </button>
-          <img src="https://i.pravatar.cc/100?img=11" alt="Avatar" className="avatar" />
+          <img src="/deepak_profile.jpg" alt="Deepak Anmol" className="avatar" />
         </div>
       </header>
 
