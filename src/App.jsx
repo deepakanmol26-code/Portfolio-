@@ -55,36 +55,35 @@ const IconMoon = () => (
   </svg>
 );
 
-// Component: Deepak Motion Engine Animation for Academic Databanks
-const DeepakMotionEngine = () => {
+// Component: InspireMotion Animation for Academic Databanks
+const InspireMotionAcademic = () => {
   return (
-    <div className="deepak-motion-engine reveal r-scale d1">
-      <div className="dme-core-glow"></div>
+    <div className="inspire-motion-container reveal r-up d1">
+      <div className="im-ambient-light"></div>
       
-      <div className="dme-header">
-        <h2 className="dme-title" data-text="Academic Databanks">Academic Databanks</h2>
-        <p className="dme-subtitle">Records of formal education vectors.</p>
+      <div className="im-header">
+        <h2 className="im-title">Academic Databanks</h2>
+        <p className="im-subtitle">Records of formal education vectors.</p>
       </div>
 
-      <div className="dme-track">
-        <div className="dme-energy-line"></div>
-        
-        <div className="dme-node">
-          <div className="dme-pulse-dot"></div>
-          <div className="dme-content motioncraft-elevate">
-            <div className="dme-hologram-scan"></div>
-            <h3 className="dme-degree">MA (Sociology)</h3>
-            <p className="dme-university">Central University of South Bihar, Gaya</p>
-            <p className="dme-report">Report: "Liquor and its negative impact on social fabric in Bihar"</p>
+      <div className="im-cards-wrapper">
+        {/* Card 1: MA */}
+        <div className="im-card deepak-inspire-anim">
+          <div className="im-shine-sweep"></div>
+          <div className="im-card-inner">
+            <h3 className="im-degree">MA (Sociology)</h3>
+            <p className="im-university">Central University of South Bihar, Gaya</p>
+            <div className="im-separator"></div>
+            <p className="im-report">Report: "Liquor and its negative impact on social fabric in Bihar"</p>
           </div>
         </div>
 
-        <div className="dme-node dme-delay">
-          <div className="dme-pulse-dot"></div>
-          <div className="dme-content motioncraft-elevate">
-            <div className="dme-hologram-scan"></div>
-            <h3 className="dme-degree">Bachelor of Business Administration</h3>
-            <p className="dme-university">LNMU, Darbhanga</p>
+        {/* Card 2: BBA */}
+        <div className="im-card deepak-inspire-anim im-delay">
+          <div className="im-shine-sweep"></div>
+          <div className="im-card-inner">
+            <h3 className="im-degree">Bachelor of Business Administration</h3>
+            <p className="im-university">LNMU, Darbhanga</p>
           </div>
         </div>
       </div>
@@ -518,7 +517,7 @@ function App() {
         </section>
 
         {/* Education + Certifications */}
-        <DeepakMotionEngine />
+        <InspireMotionAcademic />
 
         {/* 3D Matrix Accordion */}
         <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center', color: 'var(--primary-red)', textShadow: '0 0 10px rgba(255, 7, 58, 0.5)', fontSize: '1.1rem', fontWeight: 'bold'}}>
