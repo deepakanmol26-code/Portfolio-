@@ -122,6 +122,221 @@ const MatrixAccordion = () => {
   );
 };
 
+// ═══════════════════════════════════════════
+// NETFLIX EXPERIENCE UNIVERSE - DATA & COMPONENTS
+// ═══════════════════════════════════════════
+const experienceData = [
+  {
+    id: 1, category: 'leadership',
+    title: 'School Excellence & Community Integration',
+    role: 'Project Mgr & Asst Regional Manager',
+    org: 'Kshamtalaya Foundation',
+    duration: '2022 — Present',
+    tagline: 'Transforming education at the grassroots level',
+    description: 'Spearheading comprehensive program implementation across Samastipur and Himachal Pradesh. Driving macro-level educational transformations in collaboration with state education systems.',
+    achievements: [
+      'Led holistic program implementation in direct collaboration with state education frameworks.',
+      'Drove community-centric approaches to elevate baseline learning environments.',
+      'Oversaw strategic budget localization and managed fellowship recruitment funnels.',
+    ],
+    skills: ['Strategy', 'Capacity Building', 'Recruitment', 'Government Liaison'],
+    impact: '150+ Schools Transformed',
+    gradient: 'linear-gradient(135deg, #1a0000 0%, #330011 50%, #0a0d1c 100%)',
+  },
+  {
+    id: 2, category: 'leadership',
+    title: 'Digital Synapse & Ed-Tech Deployment',
+    role: 'Training & Development Lead',
+    org: 'Magic Bus India Foundation',
+    duration: '2021 — 2022',
+    tagline: 'Engineering capacity-building interface layers',
+    description: 'Overseeing blended learning deployments to optimize last-mile education delivery. Engineering AI-based learning modules and structured training pathways.',
+    achievements: [
+      'Engineered AI-based learning modules and structured training pathways for teaching staff.',
+      'Trained educators on integrating AI tools, digital presentation techniques, and tech systems.',
+      'Implemented comprehensive LMS tracking mechanisms to monitor outcome metrics.',
+    ],
+    skills: ['AI Tools', 'Ed-Tech', 'LMS Monitoring', 'Digital Training'],
+    impact: '500+ Educators Trained',
+    gradient: 'linear-gradient(135deg, #0d001a 0%, #1a0033 50%, #0a0d1c 100%)',
+  },
+  {
+    id: 3, category: 'projects',
+    title: 'Urban Entrepreneurship Fellowship',
+    role: 'Fellow & Trainer',
+    org: 'Piramal Foundation',
+    duration: '2020 — 2021',
+    tagline: 'Designing future-ready curriculum for 40K+ children',
+    description: 'Urban Entrepreneurship Fellowship, Pune. Designed and developed contextualized content for FLN, Life Skills, and Employability across 45+ structured training sessions.',
+    achievements: [
+      'Designed contextualized content for FLN, Life Skills, and Employability.',
+      'Conducted 45+ structured training sessions across diverse communities.',
+      'Impacted 40,000+ children through scalable curriculum frameworks.',
+    ],
+    skills: ['Curriculum Design', 'Mentoring', 'Data Review', 'Content Dev'],
+    impact: '40K+ Children Impacted',
+    gradient: 'linear-gradient(135deg, #001a0d 0%, #003322 50%, #0a0d1c 100%)',
+  },
+  {
+    id: 4, category: 'projects',
+    title: 'Strategic Partnerships & ESIC Integration',
+    role: 'Partnership Coordinator',
+    org: 'ESIC / Government',
+    duration: '2019 — 2021',
+    tagline: 'Building bridges between government and communities',
+    description: 'Built collaborative partnerships with ESIC and local governance. Partnered with 65+ companies to integrate services and LMS-based modules. Mentored field teams.',
+    achievements: [
+      'Insured 5,000+ persons through ESIC integration programs.',
+      'Partnered with 65+ companies for service integration.',
+      'Mentored field teams for processing registrations and claims.',
+    ],
+    skills: ['Gov Liaison', 'Partnerships', 'Field Operations', 'LMS'],
+    impact: '5,000+ Insured',
+    gradient: 'linear-gradient(135deg, #0d0a1c 0%, #1a1133 50%, #0a0d1c 100%)',
+  },
+];
+
+// Netflix-style Experience Card
+const NxCard = ({ item, onExpand }) => {
+  const cardRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = useCallback((e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 15;
+    const y = -((e.clientY - rect.top) / rect.height - 0.5) * 15;
+    cardRef.current.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg) scale(1.08)`;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+    setIsHovered(false);
+  }, []);
+
+  return (
+    <div className="nx-card-wrap">
+      <div
+        ref={cardRef}
+        className={`nx-card ${isHovered ? 'nx-card-hovered' : ''}`}
+        style={{background: item.gradient}}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => onExpand(item)}
+      >
+        <div className="nx-card-shine"></div>
+        <div className="nx-card-content">
+          <span className="nx-card-duration">{item.duration}</span>
+          <h3 className="nx-card-title">{item.title}</h3>
+          <p className="nx-card-org">{item.org}</p>
+          <div className="nx-card-impact">{item.impact}</div>
+        </div>
+        {/* Hover Preview Panel */}
+        <div className="nx-preview">
+          <p className="nx-preview-tagline">{item.tagline}</p>
+          <div className="nx-preview-skills">
+            {item.skills.map((s, i) => <span key={i} className="nx-skill-tag">{s}</span>)}
+          </div>
+          <button className="nx-play-btn" onClick={(e) => { e.stopPropagation(); onExpand(item); }}>
+            ▶ Play Experience
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Netflix Row with horizontal scroll
+const NetflixRow = ({ title, items }) => {
+  const [expandedItem, setExpandedItem] = useState(null);
+  const rowRef = useRef(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const handleDown = (e) => {
+    isDragging.current = true;
+    startX.current = e.pageX - rowRef.current.offsetLeft;
+    scrollLeft.current = rowRef.current.scrollLeft;
+    rowRef.current.style.cursor = 'grabbing';
+  };
+  const handleMove = (e) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const x = e.pageX - rowRef.current.offsetLeft;
+    rowRef.current.scrollLeft = scrollLeft.current - (x - startX.current) * 1.5;
+  };
+  const handleUp = () => {
+    isDragging.current = false;
+    if (rowRef.current) rowRef.current.style.cursor = 'grab';
+  };
+
+  return (
+    <>
+      <div className="nx-row-section reveal r-up d2">
+        <h2 className="nx-row-title">{title}</h2>
+        <div
+          className="nx-row-scroll"
+          ref={rowRef}
+          onMouseDown={handleDown}
+          onMouseMove={handleMove}
+          onMouseUp={handleUp}
+          onMouseLeave={handleUp}
+        >
+          {items.map(item => (
+            <NxCard key={item.id} item={item} onExpand={setExpandedItem} />
+          ))}
+        </div>
+      </div>
+
+      {/* Full-Screen Modal - Movie Mode */}
+      {expandedItem && (
+        <div className="nx-modal-backdrop" onClick={() => setExpandedItem(null)}>
+          <div className="nx-modal" onClick={e => e.stopPropagation()}>
+            <button className="nx-modal-close" onClick={() => setExpandedItem(null)}>✕</button>
+            <div className="nx-modal-hero" style={{background: expandedItem.gradient}}>
+              <div className="nx-modal-hero-content">
+                <span className="nx-modal-duration">{expandedItem.duration}</span>
+                <h1 className="nx-modal-title">{expandedItem.title}</h1>
+                <p className="nx-modal-role">{expandedItem.role} — {expandedItem.org}</p>
+                <p className="nx-modal-tagline">{expandedItem.tagline}</p>
+              </div>
+            </div>
+            <div className="nx-modal-body">
+              <div className="nx-modal-section">
+                <h3>The Story</h3>
+                <p>{expandedItem.description}</p>
+              </div>
+              <div className="nx-modal-section">
+                <h3>Key Achievements</h3>
+                <ul>
+                  {expandedItem.achievements.map((a, i) => (
+                    <li key={i} className="nx-achievement" style={{animationDelay: `${i * 0.15}s`}}>{a}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="nx-modal-section">
+                <h3>Skills Deployed</h3>
+                <div className="nx-modal-skills">
+                  {expandedItem.skills.map((s, i) => (
+                    <span key={i} className="nx-skill-tag-lg" style={{animationDelay: `${i * 0.1}s`}}>{s}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="nx-modal-impact">
+                <span className="nx-impact-label">IMPACT METRIC</span>
+                <span className="nx-impact-value">{expandedItem.impact}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
 function App() {
   const [isDark, setIsDark] = useState(true);
 
@@ -199,114 +414,23 @@ function App() {
           <div className="hero-banner-glow"></div>
         </section>
 
-        {/* Header */}
-        <h1 className="page-title reveal r-up d1">Work Experience</h1>
-        <p className="page-subtitle reveal r-up d2">
-          An archival record of technological deployments, capacity building,
-          and social integration projects across public systems and communities.
-          Tracking impact parameters from 2022 to present.
-        </p>
+        {/* ═══════════════════════════════════════════
+            NETFLIX-STYLE EXPERIENCE UNIVERSE
+            ═══════════════════════════════════════════ */}
+        <section className="nx-universe reveal r-up d1">
+          <div className="nx-particles">
+            {[...Array(30)].map((_,i) => <span key={i} className="nx-particle" style={{
+              left: `${Math.random()*100}%`, top: `${Math.random()*100}%`,
+              animationDelay: `${Math.random()*8}s`, animationDuration: `${6+Math.random()*6}s`
+            }}/>)}
+          </div>
 
-        {/* Profile Intro */}
-        <div className="profile-intro reveal r-up d3">
-          "Seeking a highly responsible position where I can leverage my strong communication, leadership, and problem-solving skills—honed through extensive training and professional development initiatives—to drive team success and contribute positively to organizational goals."
-        </div>
+          <h1 className="nx-section-title reveal r-up d1">Experience Universe</h1>
+          <p className="nx-section-sub reveal r-up d2">Browse stories of impact — each role a chapter worth exploring.</p>
 
-        {/* PRIMARY GRID */}
-        <div className="grid-layout">
-
-          {/* Card 1: Kshamtalaya Foundation */}
-          <Card3D className="active-card highlight-card span-col reveal r-slide-right d1">
-            <div className="meta-row">
-              <span>PROJECT MGR & ASST REGIONAL MANAGER // KSHAMTALAYA</span>
-              <IconNetwork />
-            </div>
-            <h2 className="card-title">School Excellence & Community Integration</h2>
-            <p className="card-desc">
-              Spearheading comprehensive program implementation across Samastipur and Himachal Pradesh.
-              Driving macro-level educational transformations in collaboration with state systems.
-            </p>
-            <ul className="card-bullets">
-              <li>Led holistic program implementation in direct collaboration with state education frameworks.</li>
-              <li>Drove community-centric approaches to elevate baseline learning environments.</li>
-              <li>Oversaw strategic budget localization and managed fellowship recruitment funnels.</li>
-            </ul>
-            <div className="pills-row">
-              <span className="pill active">STRATEGY</span>
-              <span className="pill active">CAPACITY BUILDING</span>
-              <span className="pill active">RECRUITMENT</span>
-            </div>
-          </Card3D>
-
-          {/* Card 1.5: Magic Bus India Foundation */}
-          <Card3D className="active-card highlight-card span-col reveal r-slide-left d2" style={{marginTop: '1rem'}}>
-            <div className="meta-row">
-              <span>TRAINING & DEVELOPMENT // MAGIC BUS INDIA</span>
-              <IconCube />
-            </div>
-            <h2 className="card-title">Digital Synapse & Ed-Tech Deployment</h2>
-            <p className="card-desc">
-              Engineering capacity-building interface layers and overseeing blended learning
-              deployments to optimize last-mile education delivery.
-            </p>
-            <ul className="card-bullets">
-              <li>Engineered AI-based learning modules and structured training pathways for teaching staff.</li>
-              <li>Trained educators on integrating AI tools, digital presentation techniques, and tech systems.</li>
-              <li>Implemented comprehensive LMS tracking mechanisms to monitor outcome metrics.</li>
-            </ul>
-            <div className="pills-row">
-              <span className="pill active">AI TOOLS</span>
-              <span className="pill active">ED-TECH</span>
-              <span className="pill active">LMS MONITORING</span>
-            </div>
-          </Card3D>
-
-          {/* Card 2: Piramal Foundation */}
-          <Card3D className="reveal r-slide-left d2">
-            <div className="meta-row">
-              <IconDNA />
-              <span className="meta-link">ACTIVE LINK</span>
-            </div>
-            <h2 className="card-title" style={{fontSize: '1.6rem'}}>Fellow & Trainer<br/>(Piramal Foundation)</h2>
-            <p className="card-desc" style={{fontSize: '0.9rem'}}>
-              Urban Entrepreneurship Fellowship, Pune. Designed and developed contextualized content for FLN, Life Skills, and Employability across 45+ structured training sessions.
-            </p>
-            <div className="skills-grid">
-              <span className="skill-tag highlight">Curriculum Design</span>
-              <span className="skill-tag highlight">Mentoring</span>
-              <span className="skill-tag highlight">Data Review</span>
-            </div>
-            <div className="stats-row">
-              <div className="stat-block">
-                <div className="stat-value purple">40K+</div>
-                <div className="stat-label">Children Impacted</div>
-              </div>
-            </div>
-          </Card3D>
-
-          {/* Card 3: ESIC */}
-          <Card3D className="reveal r-slide-right d3">
-            <div className="meta-row">
-              <span>2019 — 2021 (APPROX LOGS)</span>
-            </div>
-            <h2 className="card-title" style={{fontSize: '1.6rem'}}>Strategic Partnerships & ESIC Integration</h2>
-            <p className="card-desc" style={{fontSize: '0.9rem'}}>
-              Built collaborative partnerships with ESIC and local governance. Partnered with 65+ companies to integrate services and LMS-based modules.
-              Mentored field teams for processing registrations and claims.
-            </p>
-            <div className="stats-row">
-              <div className="stat-block">
-                <div className="stat-value">5,000+</div>
-                <div className="stat-label">Insured Persons</div>
-              </div>
-              <div className="stat-block">
-                <div className="stat-value">65+</div>
-                <div className="stat-label">Corporate Partners</div>
-              </div>
-            </div>
-          </Card3D>
-
-        </div>
+          <NetflixRow title="Leadership Roles" items={experienceData.filter(d => d.category === 'leadership')} />
+          <NetflixRow title="Projects & Impact" items={experienceData.filter(d => d.category === 'projects')} />
+        </section>
 
         {/* Education + Certifications */}
         <div className="grid-layout" style={{marginBottom: 0}}>
