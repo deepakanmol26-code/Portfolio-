@@ -753,8 +753,106 @@
 .d3 { transition-delay: 0.4s; }
 .d4 { transition-delay: 0.55s; }
 
+/* ================================================
+   3D SPIDER WEB PROTOCOLS
+   ================================================ */
+.spider-section {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 6rem 0;
+  overflow: hidden;
+}
+
+.spider-web {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: webSpin 20s infinite linear;
+}
+
+.spider-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) translateZ(60px);
+  background: rgba(10, 13, 28, 0.9);
+  border: 2px solid var(--primary-cyan);
+  padding: 1.5rem;
+  border-radius: 50%;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,243,255,0.4), inset 0 0 20px rgba(0,243,255,0.2);
+  z-index: 10;
+}
+
+.spider-node {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 160px;
+  margin-left: -80px;
+  margin-top: -30px;
+  background: rgba(10, 13, 28, 0.7);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  padding: 1rem;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #fff;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.spider-node:hover {
+  border-color: var(--primary-cyan);
+  box-shadow: 0 0 20px var(--primary-cyan-dim), 0 10px 30px rgba(0,0,0,0.6);
+  background: rgba(10, 13, 28, 0.9);
+  color: var(--primary-cyan);
+}
+
+.node-1 { transform: rotateY(0deg) translateZ(250px); }
+.node-2 { transform: rotateY(60deg) translateZ(250px); }
+.node-3 { transform: rotateY(120deg) translateZ(250px); }
+.node-4 { transform: rotateY(180deg) translateZ(250px); }
+.node-5 { transform: rotateY(240deg) translateZ(250px); }
+.node-6 { transform: rotateY(300deg) translateZ(250px); }
+
+/* SVG-like connection lines drawn purely with CSS pseudo-elements pointing to center */
+.spider-node::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,243,255,0.5), transparent);
+  transform-origin: 0 0;
+  transform: rotateY(90deg) translateZ(-1px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes webSpin {
+  from { transform: rotateY(0deg) rotateX(-5deg); }
+  to { transform: rotateY(360deg) rotateX(-5deg); }
+}
+
+.theme-light .spider-center { background: rgba(255,255,255,0.9); color: var(--primary-cyan); }
+.theme-light .spider-node { background: rgba(255,255,255,0.8); color: var(--text-main); border-color: rgba(0,0,0,0.1); }
+.theme-light .spider-node:hover { color: var(--primary-cyan); border-color: var(--primary-cyan); }
+
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .spider-section { height: 400px; transform: scale(0.65); margin-top: -2rem; }
   .nav-links { display: none; }
   .tree-branch.left,
   .tree-branch.right {

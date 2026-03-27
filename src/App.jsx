@@ -273,8 +273,8 @@ function App() {
         </div>
 
         {/* Education + Certifications */}
-        <div className="grid-layout">
-          <Card3D className="reveal r-up d1">
+        <div className="grid-layout" style={{marginBottom: 0}}>
+          <Card3D className="reveal r-up d1 span-col">
             <h2 className="card-title" style={{fontSize: '1.5rem'}}>Academic Databanks</h2>
             <p className="card-desc">Records of formal education vectors.</p>
             <ul className="card-bullets">
@@ -282,19 +282,21 @@ function App() {
               <li><strong>Bachelor of Business Administration</strong> — LNMU, Darbhanga</li>
             </ul>
           </Card3D>
-
-          <Card3D className="reveal r-up d2">
-            <h2 className="card-title" style={{fontSize: '1.5rem'}}>Certified Protocol Matrices</h2>
-            <div className="skills-grid">
-              <span className="skill-tag highlight">Project Management (Kaivalya)</span>
-              <span className="skill-tag highlight">Lean Six Sigma</span>
-              <span className="skill-tag">Soft Skill Master Trainer (NIST)</span>
-              <span className="skill-tag">Evaluation of Training (VVGNLI)</span>
-              <span className="skill-tag">NSDC Digital Marketing</span>
-              <span className="skill-tag">Chat GPT Workshop</span>
-            </div>
-          </Card3D>
         </div>
+
+        {/* 3D Spider Web Protocol Matrices */}
+        <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center'}}>CERTIFIED PROTOCOL MATRICES</div>
+        <section className="spider-section reveal r-scale d2">
+          <div className="spider-web">
+            <div className="spider-center">PROTOCOLS</div>
+            <div className="spider-node node-1">Project Mgmt<br/>(Kaivalya)</div>
+            <div className="spider-node node-2">Lean Six<br/>Sigma</div>
+            <div className="spider-node node-3">Soft Skill Master<br/>Trainer (NIST)</div>
+            <div className="spider-node node-4">Training Eval<br/>(VVGNLI)</div>
+            <div className="spider-node node-5">NSDC Digital<br/>Marketing</div>
+            <div className="spider-node node-6">Chat GPT<br/>Workshop</div>
+          </div>
+        </section>
 
         {/* MAP - Deployments */}
         <div className="deployments-map reveal r-scale d1">
