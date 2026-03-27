@@ -179,26 +179,48 @@ function App() {
         {/* PRIMARY GRID */}
         <div className="grid-layout">
 
-          {/* Card 1: Kshamtalaya + Magic Bus */}
-          <Card3D className="active-card span-col reveal r-scale d1">
+          {/* Card 1: Kshamtalaya Foundation */}
+          <Card3D className="active-card span-col reveal r-slide-right d1">
             <div className="meta-row">
-              <span>PRESENT // PROJECT MGR & ASST REGIONAL MANAGER</span>
+              <span>PROJECT MGR & ASST REGIONAL MANAGER // KSHAMTALAYA</span>
               <IconNetwork />
             </div>
-            <h2 className="card-title">School Excellence & Training Synapse</h2>
+            <h2 className="card-title">School Excellence & Community Integration</h2>
             <p className="card-desc">
-              Spearheading program implementation across Samastipur and Himachal Pradesh.
-              Engineering capacity-building interface layers and AI-based learning modules for teachers.
-              Oversaw comprehensive blended learning deployments for last-mile education.
+              Spearheading comprehensive program implementation across Samastipur and Himachal Pradesh.
+              Driving macro-level educational transformations in collaboration with state systems.
             </p>
             <ul className="card-bullets">
-              <li>Led program implementation in collaboration with state education systems.</li>
-              <li>Trained staff on integrating AI tools, digital presentation, and LMS tracking.</li>
-              <li>Drove community-based approaches and oversaw budget and fellowship recruitment.</li>
+              <li>Led holistic program implementation in direct collaboration with state education frameworks.</li>
+              <li>Drove community-centric approaches to elevate baseline learning environments.</li>
+              <li>Oversaw strategic budget localization and managed fellowship recruitment funnels.</li>
             </ul>
             <div className="pills-row">
-              <span className="pill active">CAPACITY BUILDING</span>
-              <span className="pill">AI TOOLS</span>
+              <span className="pill active">STRATEGY</span>
+              <span className="pill">CAPACITY BUILDING</span>
+              <span className="pill">RECRUITMENT</span>
+            </div>
+          </Card3D>
+
+          {/* Card 1.5: Magic Bus India Foundation */}
+          <Card3D className="active-card span-col reveal r-slide-left d2" style={{marginTop: '1rem'}}>
+            <div className="meta-row">
+              <span>TRAINING & DEVELOPMENT // MAGIC BUS INDIA</span>
+              <IconCube />
+            </div>
+            <h2 className="card-title">Digital Synapse & Ed-Tech Deployment</h2>
+            <p className="card-desc">
+              Engineering capacity-building interface layers and overseeing blended learning
+              deployments to optimize last-mile education delivery.
+            </p>
+            <ul className="card-bullets">
+              <li>Engineered AI-based learning modules and structured training pathways for teaching staff.</li>
+              <li>Trained educators on integrating AI tools, digital presentation techniques, and tech systems.</li>
+              <li>Implemented comprehensive LMS tracking mechanisms to monitor outcome metrics.</li>
+            </ul>
+            <div className="pills-row">
+              <span className="pill active">AI TOOLS</span>
+              <span className="pill">ED-TECH</span>
               <span className="pill">LMS MONITORING</span>
             </div>
           </Card3D>
