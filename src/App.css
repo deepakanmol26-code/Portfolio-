@@ -770,15 +770,15 @@
 
 .spider-web {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 0px;
+  height: 0px;
   transform-style: preserve-3d;
   animation: webSpin 20s infinite linear;
 }
 
 .spider-center {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 0; left: 0;
   transform: translate(-50%, -50%) translateZ(60px);
   background: rgba(10, 13, 28, 0.9);
   border: 2px solid var(--primary-cyan);
@@ -792,14 +792,16 @@
   text-align: center;
   box-shadow: 0 0 30px rgba(0,243,255,0.4), inset 0 0 20px rgba(0,243,255,0.2);
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .spider-node {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 0; left: 0;
   width: 160px;
-  margin-left: -80px;
-  margin-top: -30px;
+  /* Centering completely with transform instead of hardcoded margins */
   background: rgba(10, 13, 28, 0.7);
   border: 1px solid rgba(0, 243, 255, 0.3);
   padding: 1rem;
@@ -820,12 +822,12 @@
   color: var(--primary-cyan);
 }
 
-.node-1 { transform: rotateY(0deg) translateZ(250px); }
-.node-2 { transform: rotateY(60deg) translateZ(250px); }
-.node-3 { transform: rotateY(120deg) translateZ(250px); }
-.node-4 { transform: rotateY(180deg) translateZ(250px); }
-.node-5 { transform: rotateY(240deg) translateZ(250px); }
-.node-6 { transform: rotateY(300deg) translateZ(250px); }
+.node-1 { transform: translate(-50%, -50%) rotateY(0deg) translateZ(250px); }
+.node-2 { transform: translate(-50%, -50%) rotateY(60deg) translateZ(250px); }
+.node-3 { transform: translate(-50%, -50%) rotateY(120deg) translateZ(250px); }
+.node-4 { transform: translate(-50%, -50%) rotateY(180deg) translateZ(250px); }
+.node-5 { transform: translate(-50%, -50%) rotateY(240deg) translateZ(250px); }
+.node-6 { transform: translate(-50%, -50%) rotateY(300deg) translateZ(250px); }
 
 /* SVG-like connection lines drawn purely with CSS pseudo-elements pointing to center */
 .spider-node::before {
