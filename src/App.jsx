@@ -220,8 +220,8 @@ function App() {
             </ul>
             <div className="pills-row">
               <span className="pill active">AI TOOLS</span>
-              <span className="pill">ED-TECH</span>
-              <span className="pill">LMS MONITORING</span>
+              <span className="pill active">ED-TECH</span>
+              <span className="pill active">LMS MONITORING</span>
             </div>
           </Card3D>
 
@@ -238,7 +238,7 @@ function App() {
             <div className="skills-grid">
               <span className="skill-tag highlight">Curriculum Design</span>
               <span className="skill-tag">Mentoring</span>
-              <span className="skill-tag">Data Review</span>
+              <span className="skill-tag highlight">Data Review</span>
             </div>
             <div className="stats-row">
               <div className="stat-block">
@@ -274,7 +274,7 @@ function App() {
 
         {/* Education + Certifications */}
         <div className="grid-layout" style={{marginBottom: 0}}>
-          <Card3D className="reveal r-up d1 span-col">
+          <Card3D className="highlight-card reveal r-up d1 span-col">
             <h2 className="card-title" style={{fontSize: '1.5rem'}}>Academic Databanks</h2>
             <p className="card-desc">Records of formal education vectors.</p>
             <ul className="card-bullets">
@@ -285,7 +285,9 @@ function App() {
         </div>
 
         {/* 3D Spider Web Protocol Matrices */}
-        <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center'}}>CERTIFIED PROTOCOL MATRICES</div>
+        <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center', color: 'var(--primary-cyan)', textShadow: '0 0 10px rgba(0, 243, 255, 0.5)', fontSize: '1.1rem', fontWeight: 'bold'}}>
+          CERTIFIED PROTOCOL MATRICES
+        </div>
         <section className="spider-section reveal r-scale d2">
           <div className="spider-web">
             <div className="spider-center">PROTOCOLS</div>
