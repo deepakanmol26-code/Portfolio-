@@ -299,18 +299,54 @@ function App() {
           </div>
         </section>
 
-        {/* MAP - Deployments */}
+        {/* MAP - Deployments - Avatar 3D Card */}
         <div className="deployments-map reveal r-scale d1">
           <div className="temporal-log">GEOSPATIAL DEPLOYMENTS</div>
           <h2 className="page-title" style={{fontSize: '3rem', marginBottom: '2rem'}}>Operational Zones</h2>
-          <div className="map-container">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113911.2185590933!2d85.9329!3d26.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edeb0a69b0a4e3%3A0xc4053f4776a1e3bf!2sMadhubani%2C%20Bihar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Deployment Map"
-            ></iframe>
+
+          <div className="map-avatar-wrapper"
+            onMouseMove={e => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const x = ((e.clientX - rect.left) / rect.width - 0.5) * 28;
+              const y = -((e.clientY - rect.top) / rect.height - 0.5) * 28;
+              e.currentTarget.querySelector('.map-avatar-card').style.transform =
+                `perspective(900px) rotateX(${y}deg) rotateY(${x}deg) scale(1.04)`;
+              const glow = e.currentTarget.querySelector('.map-avatar-glow');
+              glow.style.background = `radial-gradient(circle at ${e.clientX - rect.left}px ${e.clientY - rect.top}px, rgba(255,7,58,0.28), transparent 70%)`;
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.querySelector('.map-avatar-card').style.transform =
+                'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)';
+              e.currentTarget.querySelector('.map-avatar-glow').style.background = 'none';
+            }}
+          >
+            <div className="map-avatar-card">
+              {/* Glow layer that follows the cursor */}
+              <div className="map-avatar-glow"></div>
+
+              {/* Floating HUD badges */}
+              <div className="map-hud-badge top-left">📍 LIVE NODE</div>
+              <div className="map-hud-badge top-right">MADHUBANI, BR</div>
+
+              {/* The actual iframe */}
+              <div className="map-container">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113911.2185590933!2d85.9329!3d26.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edeb0a69b0a4e3%3A0xc4053f4776a1e3bf!2sMadhubani%2C%20Bihar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Deployment Map"
+                ></iframe>
+              </div>
+
+              {/* Bottom stats bar */}
+              <div className="map-stats-bar">
+                <div className="map-stat"><span className="map-stat-val">26.35°N</span><span className="map-stat-lbl">LATITUDE</span></div>
+                <div className="map-stat"><span className="map-stat-val">85.93°E</span><span className="map-stat-lbl">LONGITUDE</span></div>
+                <div className="map-stat"><span className="map-stat-val">BIHAR</span><span className="map-stat-lbl">STATE</span></div>
+                <div className="map-stat"><span className="map-stat-val">INDIA</span><span className="map-stat-lbl">TERRITORY</span></div>
+              </div>
+            </div>
           </div>
         </div>
 
