@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './App.css';
 import AIChatbot from './AIChatbot';
+import LoginPortal from './LoginPortal';
 
 // SVG Icons
 const IconDNA = () => (
@@ -387,6 +388,7 @@ const TypingHeader = () => {
 };
 
 function App() {
+  const [hasEntered, setHasEntered] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
   // Apply theme class to the root
@@ -430,8 +432,12 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  if (!hasEntered) {
+    return <LoginPortal onEnter={() => setHasEntered(true)} />;
+  }
+
   return (
-    <div className="app-canvas">
+    <div className="app-canvas fade-in-fast">
 
       {/* LEFT SIDEBAR OMITTED BASED ON USER REQUEST */}
 
