@@ -85,6 +85,43 @@ const Card3D = ({ children, className }) => {
   );
 };
 
+// Protocol Matrices Data
+const protocolsData = [
+  { id: '01', title: 'Project Management', issuer: 'Kaivalya Education Foundation', desc: 'Expertise in agile and waterfall methodologies for educational ecosystems and community empowerment programs.' },
+  { id: '02', title: 'Lean Six Sigma', issuer: 'Quality Management', desc: 'Process improvement techniques for eliminating defects, optimizing workflows, and enhancing overall system efficiency.' },
+  { id: '03', title: 'Soft Skill Master Trainer', issuer: 'NIST', desc: 'Advanced certification in training facilitation, professional development, and high-impact leadership strategies.' },
+  { id: '04', title: 'Evaluation of Training', issuer: 'VVGNLI', desc: 'Metrics-driven approach to assessing the impact and return on investment (ROI) of targeted capacity-building programs.' },
+  { id: '05', title: 'Digital Marketing', issuer: 'NSDC', desc: 'Comprehensive digital ecosystem strategies, scalable outreach optimization, and sustainable online community building.' },
+  { id: '06', title: 'Chat GPT Workshop', issuer: 'AI Integration', desc: 'Practical application of generative AI tools for productivity enhancement, rapid content generation, and strategic planning.' }
+];
+
+const MatrixAccordion = () => {
+  const [openId, setOpenId] = useState('01');
+
+  return (
+    <div className="matrix-accordion">
+      {protocolsData.map(p => (
+        <div 
+          key={p.id} 
+          className={`matrix-item ${openId === p.id ? 'active' : ''}`}
+          onClick={() => setOpenId(p.id === openId ? null : p.id)}
+        >
+          <div className="matrix-header">
+            <span className="matrix-id">{p.id}</span>
+            <span className="matrix-title">{p.title} <span className="matrix-issuer">// {p.issuer}</span></span>
+            <span className="matrix-toggle">{openId === p.id ? '−' : '+'}</span>
+          </div>
+          <div className="matrix-content">
+            <div className="matrix-inner">
+              <p>{p.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 function App() {
   const [isDark, setIsDark] = useState(true);
 
@@ -283,20 +320,12 @@ function App() {
           </Card3D>
         </div>
 
-        {/* 3D Spider Web Protocol Matrices */}
+        {/* 3D Matrix Accordion */}
         <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center', color: 'var(--primary-red)', textShadow: '0 0 10px rgba(255, 7, 58, 0.5)', fontSize: '1.1rem', fontWeight: 'bold'}}>
           CERTIFIED PROTOCOL MATRICES
         </div>
-        <section className="spider-section reveal r-scale d2">
-          <div className="spider-web">
-            <div className="spider-center">PROTOCOLS</div>
-            <div className="spider-node node-1">Project Mgmt<br/>(Kaivalya)</div>
-            <div className="spider-node node-2">Lean Six<br/>Sigma</div>
-            <div className="spider-node node-3">Soft Skill Master<br/>Trainer (NIST)</div>
-            <div className="spider-node node-4">Training Eval<br/>(VVGNLI)</div>
-            <div className="spider-node node-5">NSDC Digital<br/>Marketing</div>
-            <div className="spider-node node-6">Chat GPT<br/>Workshop</div>
-          </div>
+        <section className="matrix-section reveal r-scale d2">
+          <MatrixAccordion />
         </section>
 
         {/* MAP - Deployments - Avatar 3D Card */}
