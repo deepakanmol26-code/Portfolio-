@@ -977,11 +977,17 @@
   line-height: 1.3;
 }
 
-.nx-card-org {
+.nx-card-role-org {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  letter-spacing: 1px;
+  font-size: 0.75rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+  background: rgba(255, 7, 58, 0.15);
+  padding: 0.2rem 0.5rem;
+  border-left: 2px solid var(--primary-red);
+  margin: 0.4rem 0;
+  display: inline-block;
+  backdrop-filter: blur(4px);
 }
 
 .nx-card-impact {

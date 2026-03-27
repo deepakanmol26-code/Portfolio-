@@ -235,7 +235,7 @@ const NxCard = ({ item, onExpand }) => {
         <div className="nx-card-content">
           <span className="nx-card-duration">{item.duration}</span>
           <h3 className="nx-card-title">{item.title}</h3>
-          <p className="nx-card-org">{item.org}</p>
+          <p className="nx-card-role-org">{item.role} — {item.org}</p>
           <div className="nx-card-impact">{item.impact}</div>
         </div>
         {/* Hover Preview Panel */}
