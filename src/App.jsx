@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './App.css';
 
-// SVG Icons tailored for Sci-Fi UI
+// SVG Icons
 const IconDNA = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 14.5a3 3 0 0 1 3-3"/>
@@ -42,103 +42,99 @@ const IconSignal = () => (
 );
 
 const IconSun = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="4"/>
     <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
   </svg>
 );
 
-// 3D Card Wrapper Hook Component
-const Card3D = ({ children, className, glowColor }) => {
-  const [style, setStyle] = useState({});
+const IconMoon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+);
+
+// 3D Card Wrapper Component
+const Card3D = ({ children, className }) => {
   const cardRef = useRef(null);
 
-  const handleMouseMove = (e) => {
-    if(!cardRef.current) return;
+  const handleMouseMove = useCallback((e) => {
+    if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
-    const rotateX = ((y - centerY) / centerY) * -5;
-    const rotateY = ((x - centerX) / centerX) * 5;
-    
-    setStyle({
-      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`,
-      transition: 'none',
-      zIndex: 10,
-    });
-  };
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    cardRef.current.style.transition = 'none';
+  }, []);
 
-  const handleMouseLeave = () => {
-    setStyle({
-      transform: 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)',
-      transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-      zIndex: 1,
-    });
-  };
+  const handleMouseLeave = useCallback(() => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    cardRef.current.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+  }, []);
 
   return (
-    <div 
-      ref={cardRef}
-      className={`card-3d ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={style}
-    >
+    <div ref={cardRef} className={`card-3d ${className || ''}`}
+      onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       {children}
     </div>
   );
 };
 
 function App() {
-  
-  // Intersection Observer for animations
+  const [isDark, setIsDark] = useState(true);
+
+  // Apply theme class to the root
   useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.remove('theme-light');
+      document.documentElement.classList.add('theme-dark');
+    } else {
+      document.documentElement.classList.remove('theme-dark');
+      document.documentElement.classList.add('theme-light');
+    }
+  }, [isDark]);
+
+  // Intersection Observer for scroll reveal
+  useEffect(() => {
+    const revealElements = document.querySelectorAll('.reveal');
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.classList.add('revealed');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-    document.querySelectorAll('.reveal-fade-up').forEach((el) => {
-      observer.observe(el);
-    });
-
+    revealElements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
   return (
     <div className="app-canvas">
-      
+
       {/* LEFT SIDEBAR */}
       <aside className="sidebar">
-        <div className="sidebar-icon">
-          <IconDNA />
-        </div>
+        <div className="sidebar-icon"><IconDNA /></div>
         <div className="sidebar-divider"></div>
         <div className="sidebar-icon active">
           <IconNetwork />
           <div className="active-label">SYS-NET</div>
         </div>
-        <div className="sidebar-icon">
-          <IconCube />
-        </div>
+        <div className="sidebar-icon"><IconCube /></div>
         <div className="sidebar-divider"></div>
-        <div className="sidebar-icon">
-          <IconSignal />
-        </div>
+        <div className="sidebar-icon"><IconSignal /></div>
       </aside>
 
       {/* TOP NAVIGATION */}
       <header className="topbar">
-        <div className="logo-brand">
-          Deepak Anmol <span>D.A.</span>
-        </div>
+        <div className="logo-brand">Deepak Anmol <span>D.A.</span></div>
         <div className="nav-links">
           <a href="#nexus">NEXUS</a>
           <a href="#archive" className="active">ARCHIVE</a>
@@ -146,42 +142,45 @@ function App() {
           <a href="#signal">SIGNAL</a>
         </div>
         <div className="top-icons">
-          <IconSignal width="18" height="18" />
-          <IconSun width="18" height="18" />
+          <IconSignal />
+          <button className="theme-toggle" onClick={() => setIsDark(!isDark)}
+            aria-label="Toggle theme">
+            {isDark ? <IconSun /> : <IconMoon />}
+          </button>
           <img src="https://i.pravatar.cc/100?img=11" alt="Avatar" className="avatar" />
         </div>
       </header>
 
-      {/* MAIN CONTENT AREA */}
+      {/* MAIN CONTENT */}
       <main className="main-content">
-        
-        {/* Header Title Section */}
-        <div className="temporal-log reveal-fade-up">TEMPORAL LOGS</div>
-        <h1 className="page-title reveal-fade-up delay-100">Work Experience</h1>
-        <p className="page-subtitle reveal-fade-up delay-200">
-          An archival record of technological deployments, capacity building, 
-          and social integration projects across public systems and communities. 
+
+        {/* Header */}
+        <div className="temporal-log reveal r-up">TEMPORAL LOGS</div>
+        <h1 className="page-title reveal r-up d1">Work Experience</h1>
+        <p className="page-subtitle reveal r-up d2">
+          An archival record of technological deployments, capacity building,
+          and social integration projects across public systems and communities.
           Tracking impact parameters from 2022 to present.
         </p>
 
-        {/* Intro/Summary */}
-        <div className="profile-intro reveal-fade-up delay-300">
-          "Seeking a highly responsible position where I can leverage my strong communication, leadership, and problem-solving skills—honed through extensive training and professional development initiatives—to drive team success and contribute positively to organizational goals. Proven ability to handle multiple projects simultaneously with a high degree of transparency and impact."
+        {/* Profile Intro */}
+        <div className="profile-intro reveal r-up d3">
+          "Seeking a highly responsible position where I can leverage my strong communication, leadership, and problem-solving skills—honed through extensive training and professional development initiatives—to drive team success and contribute positively to organizational goals."
         </div>
 
-        {/* PRIMARY GRID LAYOUT */}
+        {/* PRIMARY GRID */}
         <div className="grid-layout">
-          
-          {/* Card 1: Khsamtalaya / Magic Bus */}
-          <Card3D className="active-card span-col reveal-fade-up">
+
+          {/* Card 1: Kshamtalaya + Magic Bus */}
+          <Card3D className="active-card span-col reveal r-scale d1">
             <div className="meta-row">
               <span>PRESENT // PROJECT MGR & ASST REGIONAL MANAGER</span>
               <IconNetwork />
             </div>
             <h2 className="card-title">School Excellence & Training Synapse</h2>
             <p className="card-desc">
-              Spearheading program implementation across Samastipur and Himachal Pradesh. 
-              Engineering capacity-building interface layers and AI-based learning modules for teachers. 
+              Spearheading program implementation across Samastipur and Himachal Pradesh.
+              Engineering capacity-building interface layers and AI-based learning modules for teachers.
               Oversaw comprehensive blended learning deployments for last-mile education.
             </p>
             <ul className="card-bullets">
@@ -197,9 +196,9 @@ function App() {
           </Card3D>
 
           {/* Card 2: Piramal Foundation */}
-          <Card3D className="reveal-fade-up delay-100">
+          <Card3D className="reveal r-slide-left d2">
             <div className="meta-row">
-              <IconDNA width="16" />
+              <IconDNA />
               <span className="meta-link">ACTIVE LINK</span>
             </div>
             <h2 className="card-title" style={{fontSize: '1.6rem'}}>Fellow & Trainer<br/>(Piramal Foundation)</h2>
@@ -211,7 +210,6 @@ function App() {
               <span className="skill-tag">Mentoring</span>
               <span className="skill-tag">Data Review</span>
             </div>
-            
             <div className="stats-row">
               <div className="stat-block">
                 <div className="stat-value purple">40K+</div>
@@ -220,14 +218,14 @@ function App() {
             </div>
           </Card3D>
 
-          {/* Card 3: ESIC / Strategic Partnerships */}
-          <Card3D className="reveal-fade-up delay-200">
+          {/* Card 3: ESIC */}
+          <Card3D className="reveal r-slide-right d3">
             <div className="meta-row">
               <span>2019 — 2021 (APPROX LOGS)</span>
             </div>
             <h2 className="card-title" style={{fontSize: '1.6rem'}}>Strategic Partnerships & ESIC Integration</h2>
             <p className="card-desc" style={{fontSize: '0.9rem'}}>
-              Built collaborative partnerships with ESIC and local governance. Partnered with 65+ companies to integrate services and LMS-based modules. 
+              Built collaborative partnerships with ESIC and local governance. Partnered with 65+ companies to integrate services and LMS-based modules.
               Mentored field teams for processing registrations and claims.
             </p>
             <div className="stats-row">
@@ -244,9 +242,9 @@ function App() {
 
         </div>
 
-        {/* Certifications and Secondary Block */}
+        {/* Education + Certifications */}
         <div className="grid-layout">
-          <Card3D className="reveal-fade-up">
+          <Card3D className="reveal r-up d1">
             <h2 className="card-title" style={{fontSize: '1.5rem'}}>Academic Databanks</h2>
             <p className="card-desc">Records of formal education vectors.</p>
             <ul className="card-bullets">
@@ -254,8 +252,8 @@ function App() {
               <li><strong>Bachelor of Business Administration</strong> — LNMU, Darbhanga</li>
             </ul>
           </Card3D>
-          
-          <Card3D className="reveal-fade-up delay-100">
+
+          <Card3D className="reveal r-up d2">
             <h2 className="card-title" style={{fontSize: '1.5rem'}}>Certified Protocol Matrices</h2>
             <div className="skills-grid">
               <span className="skill-tag highlight">Project Management (Kaivalya)</span>
@@ -268,8 +266,8 @@ function App() {
           </Card3D>
         </div>
 
-        {/* MAP SECTION - Deployments */}
-        <div className="deployments-map reveal-fade-up">
+        {/* MAP - Deployments */}
+        <div className="deployments-map reveal r-scale d1">
           <div className="temporal-log">GEOSPATIAL DEPLOYMENTS</div>
           <h2 className="page-title" style={{fontSize: '3rem', marginBottom: '2rem'}}>Operational Zones</h2>
           <div className="map-container">
@@ -283,8 +281,8 @@ function App() {
           </div>
         </div>
 
-        {/* Bottom Manifest */}
-        <div className="contact-pulse reveal-fade-up delay-200">
+        {/* Footer */}
+        <div className="contact-pulse reveal r-up d2">
           <div>
             <span className="pulse-indicator"></span>
             <strong>CONTACT-PULSE:</strong> deepakanmol26@gmail.com // +91 9509603144
