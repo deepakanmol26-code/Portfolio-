@@ -300,16 +300,75 @@ function App() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="contact-pulse reveal r-up d2">
-          <div>
-            <span className="pulse-indicator"></span>
-            <strong>CONTACT-PULSE:</strong> deepakanmol26@gmail.com // +91 9509603144
+        {/* Tree of Connections */}
+        <section className="tree-section reveal r-up d1">
+          <div className="temporal-log">NEURAL TREE</div>
+          <h2 className="page-title" style={{fontSize: '3rem', marginBottom: '3rem'}}>Connect With Me</h2>
+
+          <div className="tree-trunk">
+            <div className="trunk-line"></div>
+
+            {/* LEFT BRANCHES */}
+            <div className="tree-branch left reveal r-slide-left d1">
+              <div className="branch-line left"></div>
+              <div className="leaf">
+                <div className="leaf-icon">📧</div>
+                <div className="leaf-label">EMAIL</div>
+                <div className="leaf-value">deepakanmol26@gmail.com</div>
+              </div>
+            </div>
+
+            <div className="tree-branch right reveal r-slide-right d2">
+              <div className="branch-line right"></div>
+              <div className="leaf">
+                <div className="leaf-icon">📞</div>
+                <div className="leaf-label">PHONE</div>
+                <div className="leaf-value">+91 9509603144</div>
+              </div>
+            </div>
+
+            <div className="tree-branch left reveal r-slide-left d3">
+              <div className="branch-line left"></div>
+              <div className="leaf">
+                <div className="leaf-icon">💼</div>
+                <div className="leaf-label">LINKEDIN</div>
+                <a className="leaf-value leaf-link" href="https://www.linkedin.com/in/deepakanmol" target="_blank" rel="noopener noreferrer">linkedin.com/in/deepakanmol</a>
+              </div>
+            </div>
+
+            <div className="tree-branch right reveal r-slide-right d4">
+              <div className="branch-line right"></div>
+              <div className="leaf">
+                <div className="leaf-icon">🌍</div>
+                <div className="leaf-label">LOCATION</div>
+                <div className="leaf-value">Madhubani, Bihar — India</div>
+              </div>
+            </div>
+
+            <div className="tree-branch left reveal r-slide-left d2">
+              <div className="branch-line left"></div>
+              <div className="leaf">
+                <div className="leaf-icon">🗣️</div>
+                <div className="leaf-label">LANGUAGES</div>
+                <div className="leaf-value">Hindi · English · Maithili</div>
+              </div>
+            </div>
+
+            <div className="tree-branch right reveal r-slide-right d3">
+              <div className="branch-line right"></div>
+              <div className="leaf">
+                <div className="leaf-icon">🎯</div>
+                <div className="leaf-label">CORE FOCUS</div>
+                <div className="leaf-value">Training · Leadership · Impact</div>
+              </div>
+            </div>
+
+            {/* Root Pulse */}
+            <div className="tree-root reveal r-scale d4">
+              <span className="root-dot"></span>
+            </div>
           </div>
-          <div className="collab-list">
-            LINKEDIN <span>/in/deepakanmol</span>
-          </div>
-        </div>
+        </section>
 
       </main>
     </div>

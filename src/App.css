@@ -611,34 +611,125 @@
 
 .map-container iframe { width: 100%; height: 100%; }
 
-/* Footer */
-.contact-pulse {
+/* ================================================
+   TREE OF CONNECTIONS
+   ================================================ */
+.tree-section {
   margin-top: 6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 3rem;
-  background: rgba(10, 13, 28, 0.8);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 40px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 2px;
-  transition: background 0.5s ease, border-color 0.5s ease;
+  padding-bottom: 4rem;
 }
 
-.pulse-indicator {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
+.tree-trunk {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.trunk-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary-cyan), var(--primary-purple), var(--primary-cyan));
+  box-shadow: 0 0 12px var(--primary-cyan-dim);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.tree-branch {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.5rem;
+}
+
+.tree-branch.left {
+  justify-content: flex-start;
+  padding-right: 52%;
+}
+
+.tree-branch.right {
+  justify-content: flex-end;
+  padding-left: 52%;
+}
+
+.branch-line {
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width: 40px;
+  background: var(--primary-cyan);
+  opacity: 0.4;
+}
+
+.branch-line.left { right: calc(50% - 40px); }
+.branch-line.right { left: calc(50% - 40px); }
+
+.leaf {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 243, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.5rem 2rem;
+  min-width: 280px;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.leaf:hover {
+  border-color: var(--primary-cyan);
+  box-shadow: 0 0 25px var(--primary-cyan-dim), 0 12px 40px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+}
+
+.leaf-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+.leaf-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: var(--primary-cyan);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.leaf-value { font-size: 0.95rem; color: var(--text-main); font-weight: 500; }
+
+.leaf-link { color: var(--primary-cyan); transition: text-shadow 0.3s ease; }
+.leaf-link:hover { text-shadow: 0 0 8px var(--primary-cyan); }
+
+.tree-root {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.root-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
   background: var(--primary-cyan);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--primary-cyan);
-  animation: pulse 2s infinite;
-  margin-right: 12px;
+  box-shadow: 0 0 20px var(--primary-cyan), 0 0 40px var(--primary-cyan-dim);
+  animation: rootPulse 2.5s ease-in-out infinite;
 }
 
-.collab-list span { color: #fff; margin-left: 8px; }
+@keyframes rootPulse {
+  0%, 100% { box-shadow: 0 0 10px var(--primary-cyan), 0 0 20px var(--primary-cyan-dim); transform: scale(1); }
+  50% { box-shadow: 0 0 25px var(--primary-cyan), 0 0 50px var(--primary-cyan-dim); transform: scale(1.3); }
+}
+
+.theme-light .trunk-line { opacity: 0.3; box-shadow: none; }
+.theme-light .leaf { background: var(--bg-card); border-color: rgba(0,0,0,0.08); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.theme-light .leaf:hover { border-color: var(--primary-cyan); box-shadow: 0 8px 30px rgba(0,119,182,0.1); }
+.theme-light .root-dot { box-shadow: 0 0 15px rgba(0,119,182,0.3); }
 
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4); }
@@ -729,5 +820,12 @@
   .topbar { left: 0; }
   .main-content { margin-left: 0; width: 100%; }
   .nav-links { display: none; }
-  .contact-pulse { flex-direction: column; gap: 1rem; text-align: center; }
+  .tree-branch.left,
+  .tree-branch.right {
+    padding: 0 5%;
+    justify-content: center;
+  }
+  .branch-line { display: none; }
+  .trunk-line { display: none; }
+  .leaf { min-width: auto; width: 100%; }
 }
