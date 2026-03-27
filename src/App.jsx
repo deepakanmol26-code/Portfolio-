@@ -136,7 +136,7 @@ function App() {
 
       {/* TOP NAVIGATION */}
       <header className="topbar">
-        <div className="logo-brand">Deepak Anmol <span>D.A.</span></div>
+        <div className="logo-brand">Deepak Anmol</div>
         <div className="top-icons">
           <button className="theme-toggle" onClick={() => setIsDark(!isDark)}
             aria-label="Toggle theme">
