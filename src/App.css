@@ -1174,55 +1174,68 @@
 
 .nx-modal-hero-content { z-index: 2; }
 
+/* Modal hero — duration in cyan */
 .nx-modal-duration {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--primary-red);
-  letter-spacing: 2px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #00e5ff;
+  letter-spacing: 3px;
+  text-shadow: 0 0 8px rgba(0,229,255,0.6);
 }
 
+/* Modal hero — title big white */
 .nx-modal-title {
   font-size: 2.2rem;
-  font-weight: 800;
-  color: #fff;
+  font-weight: 900;
+  color: #ffffff;
   margin: 0.5rem 0;
-  text-shadow: 0 0 20px rgba(255,7,58,0.4);
+  text-shadow: 0 2px 10px rgba(0,0,0,1), 0 0 30px rgba(255,7,58,0.4);
 }
 
+/* Modal hero — role in gold */
 .nx-modal-role {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffd700;
   letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255,215,0,0.5);
 }
 
+/* Modal hero — tagline */
 .nx-modal-tagline {
   font-size: 1rem;
   color: #e2e8f0;
   font-style: italic;
   margin-top: 0.5rem;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
 }
 
+/* Modal body — force dark for readability */
 .nx-modal-body {
   padding: 1.5rem 2rem 2rem;
+  background: #0a0d1c;
 }
 
 .nx-modal-section {
   margin-bottom: 2rem;
 }
 
+/* Section headings — neon red */
 .nx-modal-section h3 {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--primary-red);
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 1rem;
-  text-shadow: 0 0 6px rgba(255,7,58,0.3);
+  text-shadow: 0 0 8px rgba(255,7,58,0.4);
 }
 
+/* Section body text */
 .nx-modal-section p {
-  color: #cbd5e1;
+  color: #e2e8f0;
   line-height: 1.7;
   font-size: 1rem;
 }
@@ -1232,10 +1245,11 @@
   padding: 0;
 }
 
+/* Achievement items */
 .nx-achievement {
   padding: 0.8rem 1rem;
   margin-bottom: 0.5rem;
-  background: rgba(255,7,58,0.05);
+  background: rgba(255,7,58,0.08);
   border-left: 3px solid var(--primary-red);
   border-radius: 0 8px 8px 0;
   color: #e2e8f0;
@@ -1283,9 +1297,9 @@
 .nx-impact-label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   letter-spacing: 3px;
-  color: var(--text-muted);
+  color: #94a3b8;
   margin-bottom: 0.5rem;
 }
 
@@ -1307,9 +1321,15 @@
 }
 .theme-light .nx-preview { background: rgba(255,255,255,0.95); }
 .theme-light .nx-preview-tagline { color: #333; }
-.theme-light .nx-modal { background: #f8f8f8; }
-.theme-light .nx-modal-section p { color: #333; }
-.theme-light .nx-achievement { color: #333; background: rgba(255,7,58,0.05); }
+
+/* Modal always stays dark for cinematic feel */
+.theme-light .nx-modal { background: #0d1017; border-color: rgba(255,7,58,0.3); }
+.theme-light .nx-modal-body { background: #0d1017; }
+.theme-light .nx-modal-section p { color: #e2e8f0; }
+.theme-light .nx-modal-section h3 { color: var(--primary-red); }
+.theme-light .nx-achievement { color: #e2e8f0; background: rgba(255,7,58,0.08); }
+.theme-light .nx-modal-close { color: #fff; }
+.theme-light .nx-impact-label { color: #94a3b8; }
 .theme-light .nx-particle { display: none; }
 
 @media (max-width: 768px) {
