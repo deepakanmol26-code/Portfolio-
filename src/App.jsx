@@ -163,7 +163,6 @@ function App() {
         </section>
 
         {/* Header */}
-        <div className="temporal-log reveal r-up">TEMPORAL LOGS</div>
         <h1 className="page-title reveal r-up d1">Work Experience</h1>
         <p className="page-subtitle reveal r-up d2">
           An archival record of technological deployments, capacity building,
