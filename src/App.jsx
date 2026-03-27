@@ -337,6 +337,44 @@ const NetflixRow = ({ title, items }) => {
   );
 };
 
+const TypingHeader = () => {
+  const roles = [
+    "Social Impact Professional",
+    "Government Liaisoning & Inter-Departmental Convergence",
+    "Curriculum Design",
+    "Ex-Piramal & Magic Bus"
+  ];
+  const [index, setIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [speed, setSpeed] = useState(150);
+
+  useEffect(() => {
+    const handleType = () => {
+      const currentFullText = roles[index];
+      if (isDeleting) {
+        setDisplayText(currentFullText.substring(0, displayText.length - 1));
+        setSpeed(50);
+      } else {
+        setDisplayText(currentFullText.substring(0, displayText.length + 1));
+        setSpeed(150);
+      }
+
+      if (!isDeleting && displayText === currentFullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && displayText === "") {
+        setIsDeleting(false);
+        setIndex((index + 1) % roles.length);
+      }
+    };
+
+    const timer = setTimeout(handleType, speed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, index, speed]);
+
+  return <span className="hero-tag typing-text">{displayText}<span className="cursor">|</span></span>;
+};
+
 function App() {
   const [isDark, setIsDark] = useState(false);
 
@@ -407,7 +445,7 @@ function App() {
             <img src="/hero_banner.jpg" alt="Deepak Anmol - Vision" className="hero-banner-img" />
             <div className="hero-banner-overlay"></div>
             <div className="hero-banner-text reveal r-up d2">
-              <span className="hero-tag">Social Impact Professional | Government Liaisoning & Inter-Departmental Convergence | Curriculum Design | Ex-Piramal & Magic Bus</span>
+              <TypingHeader />
               <h2>Central University of South Bihar</h2>
             </div>
           </div>

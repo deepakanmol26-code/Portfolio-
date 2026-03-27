@@ -283,6 +283,26 @@
   border-radius: 4px;
   margin-bottom: 1rem;
   background: rgba(255, 7, 58, 0.05);
+  min-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing-text .cursor {
+  margin-left: 2px;
+  color: var(--primary-red);
+  font-weight: bold;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.theme-light .typing-text .cursor {
+  color: var(--primary-red);
 }
 
 .hero-banner-text h2 {
