@@ -55,6 +55,51 @@ const IconMoon = () => (
   </svg>
 );
 
+// Component: Academic Dashboard with MotionCraft Elevate Transition
+const AcademicDashboard = () => {
+  return (
+    <div className="academic-dashboard reveal r-scale d1">
+      <div className="ac-header">
+        <div className="ac-pulse-ring"></div>
+        <h2 className="ac-title">Academic Databanks</h2>
+        <p className="ac-subtitle">Formal Education Vectors</p>
+      </div>
+      
+      <div className="ac-cards-container">
+        {/* Card 1: MA */}
+        <div className="ac-card motioncraft-elevate">
+          <div className="ac-card-glow"></div>
+          <div className="ac-card-content">
+            <span className="ac-year">2017 – 2019</span>
+            <h3 className="ac-degree">MA (Sociology)</h3>
+            <p className="ac-university">Central University of South Bihar, Gaya</p>
+            <div className="ac-divider"></div>
+            <p className="ac-report">
+              <span className="ac-highlight">Research Report:</span> "Liquor and its negative impact on social fabric in Bihar"
+            </p>
+          </div>
+          <div className="ac-border-trace"></div>
+        </div>
+
+        {/* Card 2: BBA */}
+        <div className="ac-card motioncraft-elevate delay-1">
+          <div className="ac-card-glow"></div>
+          <div className="ac-card-content">
+            <span className="ac-year">2013 – 2016</span>
+            <h3 className="ac-degree">Bachelor of Business Administration</h3>
+            <p className="ac-university">LNMU, Darbhanga</p>
+            <div className="ac-divider"></div>
+            <p className="ac-report">
+              <span className="ac-highlight">Core Focus:</span> Management, Business Strategy & Operations
+            </p>
+          </div>
+          <div className="ac-border-trace"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // 3D Card Wrapper Component
 const Card3D = ({ children, className }) => {
   const cardRef = useRef(null);
@@ -481,16 +526,7 @@ function App() {
         </section>
 
         {/* Education + Certifications */}
-        <div className="grid-layout" style={{marginBottom: 0}}>
-          <Card3D className="highlight-card reveal r-up d1 span-col">
-            <h2 className="card-title" style={{fontSize: '1.5rem'}}>Academic Databanks</h2>
-            <p className="card-desc">Records of formal education vectors.</p>
-            <ul className="card-bullets">
-              <li><strong>MA (Sociology)</strong> — Central University of South Bihar, Gaya. Report: "Liquor and its negative impact on social fabric in Bihar"</li>
-              <li><strong>Bachelor of Business Administration</strong> — LNMU, Darbhanga</li>
-            </ul>
-          </Card3D>
-        </div>
+        <AcademicDashboard />
 
         {/* 3D Matrix Accordion */}
         <div className="temporal-log reveal r-up d1" style={{marginTop: '4rem', textAlign: 'center', color: 'var(--primary-red)', textShadow: '0 0 10px rgba(255, 7, 58, 0.5)', fontSize: '1.1rem', fontWeight: 'bold'}}>
