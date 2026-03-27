@@ -383,7 +383,7 @@ const TypingHeader = () => {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, index, speed]);
 
-  return <span className="hero-tag typing-text">{displayText}<span className="cursor">|</span></span>;
+  return <h2 className="typing-text">{displayText}<span className="cursor">|</span></h2>;
 };
 
 function App() {
@@ -457,7 +457,6 @@ function App() {
             <div className="hero-banner-overlay"></div>
             <div className="hero-banner-text reveal r-up d2">
               <TypingHeader />
-              <h2>Central University of South Bihar</h2>
             </div>
           </div>
           <div className="hero-banner-glow"></div>
