@@ -161,6 +161,7 @@ const experienceData = [
     skills: ['AI Tools', 'Ed-Tech', 'LMS Monitoring', 'Digital Training'],
     impact: '500+ Educators Trained',
     gradient: 'linear-gradient(135deg, #0d001a 0%, #1a0033 50%, #0a0d1c 100%)',
+    image: '/magic_bus_edtech.png',
   },
   {
     id: 3, category: 'projects',
@@ -178,6 +179,7 @@ const experienceData = [
     skills: ['Curriculum Design', 'Mentoring', 'Data Review', 'Content Dev'],
     impact: '40K+ Children Impacted',
     gradient: 'linear-gradient(135deg, #001a0d 0%, #003322 50%, #0a0d1c 100%)',
+    image: '/piramal_fellowship.png',
   },
   {
     id: 4, category: 'projects',
@@ -195,6 +197,7 @@ const experienceData = [
     skills: ['Gov Liaison', 'Partnerships', 'Field Operations', 'LMS'],
     impact: '5,000+ Insured',
     gradient: 'linear-gradient(135deg, #0d0a1c 0%, #1a1133 50%, #0a0d1c 100%)',
+    image: '/esic_partnership.png',
   },
 ];
 
