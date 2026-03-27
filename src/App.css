@@ -432,6 +432,35 @@
   .span-col { grid-column: span 1; }
 }
 
+/* Highlighted Experience Cards */
+.highlight-card {
+  border: 1px solid rgba(0, 243, 255, 0.5) !important;
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.2), inset 0 0 20px rgba(0, 243, 255, 0.1) !important;
+  background: linear-gradient(135deg, rgba(15, 20, 35, 0.9), rgba(0, 40, 60, 0.8)) !important;
+}
+
+.highlight-card .card-title {
+  color: var(--primary-cyan);
+  text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+  font-size: 2.4rem;
+}
+
+.highlight-card .card-desc {
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.highlight-card .card-bullets {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.highlight-card .pill {
+  border-color: rgba(0, 243, 255, 0.4);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
 /* Card Typography */
 .meta-row {
   display: flex;

@@ -180,7 +180,7 @@ function App() {
         <div className="grid-layout">
 
           {/* Card 1: Kshamtalaya Foundation */}
-          <Card3D className="active-card span-col reveal r-slide-right d1">
+          <Card3D className="active-card highlight-card span-col reveal r-slide-right d1">
             <div className="meta-row">
               <span>PROJECT MGR & ASST REGIONAL MANAGER // KSHAMTALAYA</span>
               <IconNetwork />
@@ -197,13 +197,13 @@ function App() {
             </ul>
             <div className="pills-row">
               <span className="pill active">STRATEGY</span>
-              <span className="pill">CAPACITY BUILDING</span>
-              <span className="pill">RECRUITMENT</span>
+              <span className="pill active">CAPACITY BUILDING</span>
+              <span className="pill active">RECRUITMENT</span>
             </div>
           </Card3D>
 
           {/* Card 1.5: Magic Bus India Foundation */}
-          <Card3D className="active-card span-col reveal r-slide-left d2" style={{marginTop: '1rem'}}>
+          <Card3D className="active-card highlight-card span-col reveal r-slide-left d2" style={{marginTop: '1rem'}}>
             <div className="meta-row">
               <span>TRAINING & DEVELOPMENT // MAGIC BUS INDIA</span>
               <IconCube />
