@@ -282,6 +282,108 @@
   transition: border-color 0.5s ease;
 }
 
+/* HERO BANNER */
+.hero-banner {
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.hero-banner-wrap {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  box-shadow: 0 0 60px rgba(0, 243, 255, 0.06), 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.hero-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(5, 8, 20, 0.7) 70%,
+    rgba(5, 8, 20, 0.95) 100%
+  );
+  pointer-events: none;
+}
+
+.hero-banner-text {
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
+  z-index: 2;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--primary-cyan);
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  background: rgba(0, 243, 255, 0.05);
+}
+
+.hero-banner-text h2 {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+}
+
+.hero-banner-glow {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 60px;
+  background: radial-gradient(ellipse at center, rgba(0, 243, 255, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(15px);
+}
+
+.theme-light .hero-banner-wrap {
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.theme-light .hero-banner-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(240, 242, 245, 0.6) 70%,
+    rgba(240, 242, 245, 0.95) 100%
+  );
+}
+
+.theme-light .hero-banner-text h2 {
+  color: #1a1a2e;
+  text-shadow: none;
+}
+
+.theme-light .hero-banner-glow {
+  background: radial-gradient(ellipse at center, rgba(0, 119, 182, 0.08) 0%, transparent 70%);
+}
+
 /* MAIN CONTENT */
 .main-content {
   margin-left: 80px;

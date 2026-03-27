@@ -116,6 +116,19 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Parallax for hero banner
+  useEffect(() => {
+    const handleScroll = () => {
+      const banner = document.querySelector('.hero-banner-img');
+      if (banner) {
+        const scrollY = window.scrollY;
+        banner.style.transform = `translateY(${scrollY * 0.35}px) scale(1.08)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="app-canvas">
 
@@ -153,6 +166,19 @@ function App() {
 
       {/* MAIN CONTENT */}
       <main className="main-content">
+
+        {/* HERO BANNER */}
+        <section className="hero-banner reveal r-scale">
+          <div className="hero-banner-wrap">
+            <img src="/hero_banner.jpg" alt="Deepak Anmol - Vision" className="hero-banner-img" />
+            <div className="hero-banner-overlay"></div>
+            <div className="hero-banner-text reveal r-up d2">
+              <span className="hero-tag">VISIONARY ARCHITECT</span>
+              <h2>Empathy · Leadership · Resilience · Growth · Community</h2>
+            </div>
+          </div>
+          <div className="hero-banner-glow"></div>
+        </section>
 
         {/* Header */}
         <div className="temporal-log reveal r-up">TEMPORAL LOGS</div>
