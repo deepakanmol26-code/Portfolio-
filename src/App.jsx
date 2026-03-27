@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './App.css';
+import AIChatbot from './AIChatbot';
 
 // SVG Icons
 const IconDNA = () => (
@@ -612,6 +613,7 @@ function App() {
         </section>
 
       </main>
+      <AIChatbot />
     </div>
   );
 }
